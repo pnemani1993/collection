@@ -1,5 +1,23 @@
 # Go Basics #
 
+go.mod file defines the modules and tracks the modules that provide those packages. 
+
+Package
+: A package is a way to group functions. 
+- A package is generally made up of all the files in the same directory. 
+- A main function is executed by default when the main package is run. 
+
+## go.sum files ##
+A module may have a text file named go.sum in its root directory, alongside its go.mod file. The go.sum file contains cryptographic hashes of the module’s direct and indirect dependencies. When the go command downloads a module .mod or .zip file into the module cache, it computes a hash and checks that the hash matches the corresponding hash in the main module’s go.sum file. go.sum may be empty or absent if the module has no dependencies or if all dependencies are replaced with local directories using replace directives.
+
+## Go code ##
+
+Go code is grouped into packages and packages are grouped into modules. The module specifies the dependencies required to run the code, including the Go version and the set of other modules it requires. 
+`go mod init example.com/greetings`
+If you publish a module, this must be a path from which your module can be downloaded by Go tools. That would be your code's repository. 
+
+
+
 There are two types of Go programs: Go executables and Go libraries. 
 
 Executable programs can be run directly from the terminal and they end with .exe
