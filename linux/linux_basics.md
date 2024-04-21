@@ -21,11 +21,6 @@ pg. no. 15 - book: Linux with OS concepts - 20240418
 - POSIX: portable operating system interface. Defines a set of standards that OS developers strive to conform to. POSIX defines an application programming interface (API), so that programmers know what functions, data structures, and variables they should define or utilize to implement the code they are developing for the operating system. POSIX API has been used to develop Linux Standard Base (LSB). 
   - LSB: Among many other things, it defines the top level directory structure of linux and the location of significant linux files such as libraries, executables, and configuration files, a base set of linux commands and utilities to be implemented, and implementations for such programs as gcc, the C compiler. 
 
-## Types of users in Linux ##
-SuperUsers and normal users + software accounts. 
-- Superusers in Linux are called root users. The root user has access to all system commands and so can access all the system resources through those commands. 
-
-
 ## Filesystem Hierarchy Standard ##
 FHS defines the directory structure and the content/purpose of each directories in the linux distributions. 
 ![Linux File Syste](./images/linux-system-directoies-poster.png)
@@ -37,7 +32,7 @@ Main directories in the root directory:
   - /dev/zero: contains an infinite sequence of 0.
   - /dev/random: contains an infinite sequence of random values. 
 - etc: files - This contains the core configuration files of the system, used primarily by administrator and services, such as the password file and networking files. This folder is where you will find the required files to make changes in system configuration.  
-- usr: User binaries and program data - All executable files, libraries, and most system programs exist in /usr. For this reason most of the files contained therein are readonly for the normal user. 
+- usr: Unix System Resources - Contains user binaries and program data. All executable files, libraries, and most system programs exist in /usr. For this reason most of the files contained therein are readonly for the normal user. These include libraries, user binaries and their documentation, programs, and system utilities. 
   - bin: /usr/bin: contains basic user commands.
   - sbin: /usr/sbin: contains additional commands for the administrator. 
   - man
@@ -60,3 +55,47 @@ Main directories in the root directory:
 - media: Mount point for removable media: When any removable media is connected, a directory is automatically created under the /media directory for them. 
 - mnt: Mount directory - It is used by system administrators to manually mount a filesystem. 
 - srv: Service data - Contains data for services provided by the system. If you run a Http server, the website data is stored in the /srv directory. 
+
+There are three broad category of files in linux: 
+1. General files: These are ordinary files made up of binary or ASCII data. These are regular files such as documents, images, audio, video etc.
+2. Directory files: In linux directories are also categorized as files as they serve as storage space for other files and folders. 
+3. Device files: These are found in the `/dev` directory. These are special files that provide an interface to the device drivers which enable the usability of hardware devices on the system. 
+
+## Types of users in Linux ##
+SuperUsers and normal users + software accounts. 
+- Superusers in Linux are called root users. The root user has access to all system commands and so can access all the system resources through those commands.
+
+## Computers in general ##
+Computer consists of three main parts: Processor, Memory and I/O system. 
+
+Memory hierarchy: Registers, on-chip cache, off-chip cache, DRAM, swap space, hard disk user space, network storage devices, removable storage devices.
+
+## Bash scripting ##
+Some common commands: 
+- whoami
+- pwd
+- ls
+- cd
+- rm
+- cp
+- mv
+- uname
+- hostname
+- passwd
+- arch
+- who
+- file
+- touch - for creating files and also modifying access and modified time. 
+- find
+- man
+- help
+- whatis
+- File descriptors: 0, 1, 2 for stdin, stdout and stderr respectively. 
+
+Linux commands expect arguments. They come in two forms: options and parameters.
+- Options are user-specified variations of the command. 
+- Parameters are 
+
+## File descriptors or file handlers ##
+[File Descriptors](https://www.baeldung.com/linux/limit-file-descriptors)
+One of the many limitations 
