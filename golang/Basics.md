@@ -2,10 +2,16 @@
 
 go.mod file defines the modules and tracks the modules that provide those packages. 
 
+
+
 Package
-: A package is a way to group functions. 
+: A package is a way to group functions. Every Go program is made up of packages.
+
+- Programs start running in pacakge main.
+- By convention, the package name is the same as the last element of the import path. For instance, the "math/rand" package comprises files that begin with the statement package rand.   
 - A package is generally made up of all the files in the same directory. 
 - A main function is executed by default when the main package is run. 
+- In Go a name is exported if it starts with a capital letter. When importing a package, you can refer only to its exported name. 
 
 ## go.sum files ##
 A module may have a text file named go.sum in its root directory, alongside its go.mod file. The go.sum file contains cryptographic hashes of the module’s direct and indirect dependencies. When the go command downloads a module .mod or .zip file into the module cache, it computes a hash and checks that the hash matches the corresponding hash in the main module’s go.sum file. go.sum may be empty or absent if the module has no dependencies or if all dependencies are replaced with local directories using replace directives.
@@ -91,6 +97,17 @@ Go is a statically typed programming language = Variables have specific type and
     )
 ```
      
+The := syntax is shorthand for declaring and initializing a variable, e.g. for var f string = "apple" in this case. This syntax is only available inside functions.
+
+```go
+package main
+import "fmt"
+func main(){
+    val:= 10
+    fmt.Println("The value to be printed is " + val)
+}
+```
+
 ```go
     package main
     import "fmt"
@@ -109,30 +126,31 @@ Go is a statically typed programming language = Variables have specific type and
 
 ### for loop ###
 
-    ```Go
-    package main
-    import "fmt"
-    func main() {
-        i := 1
-        for i <= 10 {
-            fmt.Println(i)
-            i = i + 1
-        }
+```Go
+package main
+import "fmt"
+func main() {
+    i := 1
+    for i <= 10 {
+        fmt.Println(i)
+        i = i + 1
     }
-        
-    ```
-    Go only has for loop and no other kind of control structure. It can be used in multiple ways. 
+}
+    
+```
+Go only has for loop and no other kind of control structure. It can be used in multiple ways. 
 
-    ```go
-        func main() {
-            for i := 1; i <= 10; i++ {
-                fmt.Println(i)
-             }
-        }
+```go
+    func main() {
+        for i := 1; i <= 10; i++ {
+            fmt.Println(i)
+            }
+    }
 
-    ```
+```
 
-    Another special way of using for loop in Go: 
+Another special way of using for loop in Go: 
+
 ```go
 package main
 import "fmt"
@@ -151,11 +169,13 @@ func main() {
 	}
 	fmt.Println(total)
 }
- 
-
 ```
-    
-
+Another way of using for loop: 
+```go
+for i := range 10 {
+		fmt.Printf("This is Pardhu, starting on GO!!! - %[1]d \n", i)
+	}
+```
 ### if conditional statement ###
 
 ```go
