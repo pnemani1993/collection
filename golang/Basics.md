@@ -211,7 +211,18 @@ for i := range 10 {
     }
 
 ```
+Go's switch is like the one in C, C++, Java, JavaScript, and PHP, except that Go only runs the selected case, not all the cases that follow. In effect, the break statement that is needed at the end of each case in those languages is provided automatically in Go. Another important difference is that Go's switch cases need not be constants, and the values involved need not be integers. 
 
+### defer statement in Go ###
+
+`defer` statement in Go defers the execution of a function until the surrounding function returns. The deferred call's arguments are evaluated immediately, but the function call is not executed until the surrounding function returns. 
+Deferred function calls are pushed onto a stack. When a function returns, its deferred calls are executed in last-in-first-out order. 
+
+### Struct in go ###
+A struct is a collection of fields. 
+- Struct fields are accessed using a dot. 
+- Struct fields are accessed using a struct pointer. 
+- Pointers are extremely useful when paired with structs. 
 
 ## Arrays in Go ##
 
