@@ -32,44 +32,83 @@ func main() is called when a program is executed.
 
 Go is a statically typed programming language = Variables have specific type and that type cannot be changed. 
 
+## CLI commands in Go ##
+
+```
+go version
+
+go init
+
+go help
+
+godoc fmt Println
+
+go help
+
+go run first.go
+
+go mod
+
+/* The commands with go mod are:
+
+        download    download modules to local cache
+        edit        edit go.mod from tools or scripts
+        graph       print module requirement graph
+        init        initialize new module in current directory
+        tidy        add missing and remove unused modules
+        vendor      make vendored copy of dependencies
+        verify      verify dependencies have expected content
+        why         explain why packages or modules are needed
+
+*/
+
+```
 ## Data types ##
 
 ### Integer types ###
-    Integer types in Go: The number represents how many bits of data does each type use. 
-    uint8, uint16, uint32, uint64,
-    int8, int16, int32 and int64. 
-    
-    uint means unsigned integer. They only contain positive numbers. 
-    int means signed integer. 
-    
-    byte is same as uint8 and rune is same as int32.
-    
-    Three machine dependent integer types: uint, int and uintptr. 
-    
-    Better to just use int when working with integers. 
+
+- Go’s integer types are uint8, uint16, uint32, uint64, int8, int16, int32, and int64.
+- 8, 16, 32, and 64 tell us how many bits each of the types use.
+- In addition there are two alias types: byte -> uint8 and rune -> int32.
+- There are three machine dependent integer types: unit, int and uintpcr. 
+
+Integer types in Go: The number represents how many bits of data does each type use. 
+uint8, uint16, uint32, uint64,
+int8, int16, int32 and int64. 
+
+uint means unsigned integer. They only contain positive numbers. 
+int means signed integer. 
+
+byte is same as uint8 and rune is same as int32.
+
+Three machine dependent integer types: uint, int and uintptr. 
+
+Better to just use int when working with integers. 
 
 ### Floating Point numbers ###
-    Floating point numbers are inexact. 
-
-    NaN - not a number - for 0/0
-    positive and negative infinity also exist in GoLang. 
-    
-    float32 and float64
-    complex64 and complex128.
-    
-    Better to stick with float when dealing with floating point numbers. 
+- Floating point numbers are inexact. 
+- float32 and float64
+- complex64 and complex128.
+- In addition to floating point numbers, there are also three more types: 
+    - NaN - to represent not a number
+    - positive infinity
+    - negative infinity
+- Better to stick with float when dealing with floating point numbers. 
 
 ### Strings ###
+    String
+    : A string is a sequence of characters with a definite length used to represent text. Go `string`s are made up of individual bytes, usually one for each character. 
 
-    String literals can be created using double quotes or back ticks - "Hello World" or `Hello World`.
-    Double quoted strings cannot contain new lines and allow for special escape sequences.
-    
-    Strings are indexed. 
-    len function to find out the length of the string. len("Hello World") returns 11 - as white space is also a character.  
-    String Concatenation can be done with '+' just as addition. What to do with the plus sign is determined by the compiler depending upon the data types provided. 
+    - String literals can be created using double quotes or back ticks - "Hello World" or `Hello World`.
+    - Double quoted strings cannot contain new lines and allow for special escape sequences.
+    Features: 
+    - Strings are indexed. 
+    - len function to find out the length of the string. len("Hello World") returns 11 - as white space is also a character.  
+    - String Concatenation can be done with '+' just as addition. What to do with the plus sign is determined by the compiler depending upon the data types provided. 
     
 ### Boolean ###
-
+    Boolean
+    : A special one-bit integer used to represent true and false. 
     && - and
     || - or
     !  - not
@@ -77,27 +116,28 @@ Go is a statically typed programming language = Variables have specific type and
     false
     
 ## Variables ##
+Variable
+: A variable is a storage location with a specific type and an associated name. 
+
+Go is lexically scoped using blocks. The variable exists within the nearest curly braces or blocks. 
 
 ```Go
     // var x string = "Hello World" is equivalent to x := "hello world"
     // No need to specify the type sometimes as the compiler can infer the type based on the value provided.  
 ```
-    Generally use the shorter form whenever possible. 
+Generally use the shorter form whenever possible. 
     
-    Go is lexically scoped using blocks - The variable exists within the nearest curly braces, including any nested curly braces, but not outside of them. 
+For creating constants use: *const*
     
-    For creating constants use: *const*
-    
-    For defining multiple variables: 
+For defining multiple variables: 
 ```Go
-    var(
-        a = 15
-        b = 20
-        c = 45    
-    )
+var(
+    a = 15
+    b = 20
+    c = 45    
+)
 ```
-     
-The := syntax is shorthand for declaring and initializing a variable, e.g. for var f string = "apple" in this case. This syntax is only available inside functions.
+The := syntax is shorthand for declaring and initializing a variable. This syntax is only available inside functions.
 
 ```go
 package main
@@ -109,24 +149,22 @@ func main(){
 ```
 
 ```go
-    package main
-    import "fmt"
-    func main() {
-        fmt.Print("Enter a number: ")
-        var input float64 // a variable input is declared
-        fmt.Scanf("%f", &input) // this places the input from terminal into the input variable in the floating point data type.
-        output := input * 2
-        fmt.Println(output)
-    }
+package main
+import "fmt"
+func main() {
+    fmt.Print("Enter a number: ")
+    var input float64 // a variable input is declared
+    fmt.Scanf("%f", &input) // this places the input from terminal into the input variable in the floating point data type.
+    output := input * 2
+    fmt.Println(output)
+}
 ```
-    
-    
 
 ## Control structures ##
 
 ### for loop ###
 
-```Go
+```go
 package main
 import "fmt"
 func main() {
@@ -135,8 +173,7 @@ func main() {
         fmt.Println(i)
         i = i + 1
     }
-}
-    
+} 
 ```
 Go only has for loop and no other kind of control structure. It can be used in multiple ways. 
 
@@ -212,6 +249,7 @@ for i := range 10 {
 
 ```
 Go's switch is like the one in C, C++, Java, JavaScript, and PHP, except that Go only runs the selected case, not all the cases that follow. In effect, the break statement that is needed at the end of each case in those languages is provided automatically in Go. Another important difference is that Go's switch cases need not be constants, and the values involved need not be integers. 
+> break statement is provided automatically at the end of the switch and case in Go. 
 
 ### defer statement in Go ###
 
@@ -231,8 +269,8 @@ A struct is a collection of fields.
 var x [5]int
 
 ```
-
-An array is a numbered sequence of elements of a single type with a fixed length. 
+Array
+: An array is a numbered sequence of elements of a single type with a fixed length. 
 
 In Go we can directly print the array. No need to iterate through the indices like java. 
 
@@ -398,6 +436,72 @@ Maps can also be used to store structured information.
 
 Functions - Also called as Procedures or subroutines. 
 
+## Notes 20240429
+
+The Go compiler will not let you declare variables that you never use. A single underscore (_) is used to tell the compiler that we don’t need this. 
+
+## Slice
+
+Slice
+: A slice is a segment of an array. 
+- Like arrays: slices are indexable and have a length.
+- Unlike arrays: The length of the slices is allowed to change. 
+
+```go
+var x []int64 // This is an example of a slice. 
+```
+**built-in make function** for creating slices. 
+```go
+x := make([]float64, 5) // This creates a slice with an underlying array of length 5. 
+y := make([]float64, 5, 10) // This creates a slice of length 5 with a capacity of 10. 
+```
+Slices are always associated with some array and they can never be longer than the array. 
+
+**[low:high] expression** for creation of slices.
+```go
+arr := [5]float64{1,2,3,4,5}
+x := arr[0:5]
+```
+Go also provides two other built-in functions to assist with slices. 
+1. append: adds elements to the end of the slice. 
+    - If there is sufficient capacity in the underlying array, the element is placed after the last element in the slice and the length is incremented. However, if there is not sufficient capacity, a new array is created, all of the existing elements are copied over, the new element is added onto the end, and the new slice is returned. 
+```go
+package main
+import "fmt"
+func main(){
+    slice1 := []make{1,2,3}
+    slice2 := append(slice1, 4, 5)
+    fmt.Println(slice1, slice2)
+}
+```
+2. copy: it takes two arguments: dst and src -> all the elements from src are copied onto dst overwriting whatever is there. 
+
+```go
+package main
+import "fmt"
+func main(){
+    slice1 := []int{1,2,3}
+    slice2 := make([]int, 5)
+    copy(slice2, slice1)
+    fmt.Println(slice1, slice2)
+
+}
+```
+## Maps
+Maps
+: A map is an unordered collection of key-value pairs. -> also called associative arrays, hash tables or dictionaries. 
+
+`var x map[string]string`
+The map type is represented by the keyword map, followed by the key type in brackets and finally the value type. 
+
+Maps can be accessed using brackets. 
+Maps have to be initialized before they can be used. 
+
+Items can also be deleted from a map using the built in `delete` function. 
+
+```go
+delete(x, 1)
+```
 
 
 
